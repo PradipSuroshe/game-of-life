@@ -1,9 +1,8 @@
 pipeline {
 	agent any
-	tools {
-		maven "Maven"
+	environment {
+		PATH ="/user/bin:$PATH"   
 	}
-	
 	stages {
 		stage ("build_git") {
 			steps {
@@ -12,9 +11,10 @@ pipeline {
 		}
 		stage ("build_maven") {
 			steps {
-				sh "mvn package"                
-      }
-		}
+				sh "mvn clean install"                
+          		  }
+		            
+      		}
 		stage ("build_docker") {
 			steps {
 				sh "docker build -t my-tomcatImage ."                
