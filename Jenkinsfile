@@ -17,12 +17,12 @@ pipeline {
       		}
 		stage ("build_docker") {
 			steps {
-				sh "docker build -t my-tomcatImage ."                
+				sh "docker build -t my-tomcatimage ."                
             }
 		}
 		stage ("run_docker_container_JM") {
 			steps {
-				sh "docker run -d -p 8081:8080 my-tomcatImage"                
+				sh "docker run -d -p 8081:8080 my-tomcatimage"                
       }
 		}
 	}
