@@ -17,6 +17,9 @@ pipeline {
       		}
 		stage ("build_docker") {
 			steps {
+				sh "yum install docker -y"
+				sh "systemctl start docker"
+				sh "docker stop \$(docker ps -aq) && docker rm \$(docker ps -aq)"
 				sh "docker build -t my-tomcatimage ."                
             }
 		}
