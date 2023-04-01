@@ -25,7 +25,7 @@ pipeline {
 		}
 		stage ("run_docker_container_JM") {
 			steps {
-				sh "docker run -d -p 8081:8080 my-tomcatimage"                
+				sh "docker run -itdp 8081:8080 --name server my-tomcatimage bash"                
       }
 		}
 	}
